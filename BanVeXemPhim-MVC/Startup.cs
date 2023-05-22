@@ -1,4 +1,5 @@
 using BanVeXemPhim_MVC.Data;
+using BanVeXemPhim_MVC.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,9 @@ namespace BanVeXemPhim_MVC
             //DbContext 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             services.AddControllersWithViews();
+
+            //Services configuration
+            services.AddScoped<IActorsService, ActorsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
